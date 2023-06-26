@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="Phone Horror"
+run/main_scene="res://Scenes/Phone.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+AppManagerGo="*res://Scripts/MySystems/AppManager_GO.cs"
+Init="*res://Scripts/Base/Init.cs"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/behaviour_nodes/plugin.cfg", "res://addons/wait_debugger/plugin.cfg" )
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[mono]
+
+project/assembly_name="Phone Horror"
+debugger_agent/wait_timeout=15000
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

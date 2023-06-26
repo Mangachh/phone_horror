@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Console/ConsoleUI.cs" type="Script" id=1]
+[ext_resource path="res://Fonts/console_font.tres" type="DynamicFont" id=2]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.403922 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+
+[node name="Console" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+TEXT_HOLDER_CACHE = 5
+DISPLAY_TIME = 0.05
+FONT = ExtResource( 2 )
+COLOR_DEFAULT = Color( 1, 1, 1, 1 )
+COLOR_WARNING = Color( 0.592157, 0.792157, 0.0352941, 1 )
+COLOR_ERROR = Color( 1, 0, 0, 1 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Panel" type="Panel" parent="CanvasLayer2"]
+self_modulate = Color( 1, 1, 1, 0.254902 )
+margin_left = 712.0
+margin_top = 8.0
+margin_right = 1008.0
+margin_bottom = 208.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="StaticControl" type="Control" parent="CanvasLayer2/Panel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 287.0
+margin_bottom = 192.0
+
+[node name="TextHolder" type="VBoxContainer" parent="CanvasLayer2/Panel"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 289.0
+margin_bottom = 192.0
+rect_clip_content = true
+input_pass_on_modal_close_click = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Messages_Styles/BasicMessageStyle.tres" type="StyleBox" id=1]
+[ext_resource path="res://Scripts/Apps/Messages/Choice.cs" type="Script" id=2]
+
+[node name="Background" type="PanelContainer"]
+margin_left = 5.0
+margin_right = 5.0
+margin_bottom = 45.0
+focus_mode = 2
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 2 )
+textName = "Text"
+
+[node name="Text" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 15.0
+margin_right = 8.0
+margin_bottom = 29.0
+rect_clip_content = true

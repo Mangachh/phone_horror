@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Behavior Tree/Base/TreeController.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Behavior Tree/Base/WriteConsole.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Behavior Tree/AppMessages/WriteMessage.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/Behavior Tree/Base/SequenceNode.cs" type="Script" id=4]
+[ext_resource path="res://Scripts/Behavior Tree/Base/WaitTicks.cs" type="Script" id=5]
+[ext_resource path="res://Scripts/Behavior Tree/AppMessages/Choice.cs" type="Script" id=6]
+[ext_resource path="res://Scripts/Behavior Tree/AppMessages/ChoiceSelector.cs" type="Script" id=7]
+
+[node name="BehaviourRoot" type="Node"]
+script = ExtResource( 1 )
+
+[node name="BEH_Sequence Node" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="BEH_1_Console" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 2 )
+text = "Entering the Behaviour Tree"
+
+[node name="Waiter" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 5 )
+ticksToWait = 60
+
+[node name="Write" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 3 )
+Text = "Vamos a probar el chat"
+time = 0.15
+
+[node name="Waiter2" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 5 )
+ticksToWait = 60
+
+[node name="Write2" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 3 )
+Text = "Incluso ahora tendremos 3 opciones para ver si podemos escoger"
+time = 1.5
+
+[node name="Waiter3" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 5 )
+ticksToWait = 30
+
+[node name="Write3" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 3 )
+Text = "Además de rutas independientes"
+time = 0.9
+
+[node name="Waiter4" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 5 )
+ticksToWait = 30
+
+[node name="Write4" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 3 )
+Text = "Así que, ¿qué opción quieres?"
+time = 0.9
+
+[node name="Waiter5" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 5 )
+ticksToWait = 45
+
+[node name="multichoice" type="Node" parent="BEH_Sequence Node"]
+script = ExtResource( 7 )
+
+[node name="choice1" type="Node" parent="BEH_Sequence Node/multichoice"]
+script = ExtResource( 6 )
+Text = "Vamos con la primera opción"
+
+[node name="Waiter" type="Node" parent="BEH_Sequence Node/multichoice/choice1"]
+script = ExtResource( 5 )
+ticksToWait = 60
+
+[node name="Write" type="Node" parent="BEH_Sequence Node/multichoice/choice1"]
+script = ExtResource( 3 )
+Text = "Ruta 1"
+
+[node name="Waiter2" type="Node" parent="BEH_Sequence Node/multichoice/choice1"]
+script = ExtResource( 5 )
+ticksToWait = 60
+
+[node name="Write2" type="Node" parent="BEH_Sequence Node/multichoice/choice1"]
+script = ExtResource( 3 )
+Text = "Esta ruta es diferente de las otras dos, supongo"
+time = 2.0
+
+[node name="choice2" type="Node" parent="BEH_Sequence Node/multichoice"]
+script = ExtResource( 6 )
+Text = "Segunda"
+
+[node name="Waiter" type="Node" parent="BEH_Sequence Node/multichoice/choice2"]
+script = ExtResource( 5 )
+ticksToWait = 60
+
+[node name="Write" type="Node" parent="BEH_Sequence Node/multichoice/choice2"]
+script = ExtResource( 3 )
+Text = "Ruta 2"
+
+[node name="Waiter2" type="Node" parent="BEH_Sequence Node/multichoice/choice2"]
+script = ExtResource( 5 )
+ticksToWait = 15
+
+[node name="Write2" type="Node" parent="BEH_Sequence Node/multichoice/choice2"]
+script = ExtResource( 3 )
+Text = "Viva la ruta 2!"
+time = 0.2
+
+[node name="choice3" type="Node" parent="BEH_Sequence Node/multichoice"]
+script = ExtResource( 6 )
+Text = "I'm the third, baby"
+
+[node name="Waiter" type="Node" parent="BEH_Sequence Node/multichoice/choice3"]
+script = ExtResource( 5 )
+ticksToWait = 60
+
+[node name="Write" type="Node" parent="BEH_Sequence Node/multichoice/choice3"]
+script = ExtResource( 3 )
+Text = "Soy la 3a"
+
+[node name="Waiter2" type="Node" parent="BEH_Sequence Node/multichoice/choice3"]
+script = ExtResource( 5 )
+ticksToWait = 60
+
+[node name="Write2" type="Node" parent="BEH_Sequence Node/multichoice/choice3"]
+script = ExtResource( 3 )
+Text = "No se me ocurre nada que escribir..."
+time = 0.5

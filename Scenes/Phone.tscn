@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Apps/Messages/ChatView.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Apps/Messages/ChatContainer.cs" type="Script" id=2]
+[ext_resource path="res://Scenes/BehaviourRoot.tscn" type="PackedScene" id=3]
+
+[node name="Controller" type="Control"]
+
+[node name="temp_screen" type="ColorRect" parent="."]
+margin_left = 340.0
+margin_top = 23.0
+margin_right = 648.0
+margin_bottom = 513.0
+color = Color( 0.109804, 0.0941176, 0.101961, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="message_app" type="ColorRect" parent="."]
+margin_left = 351.0
+margin_top = 34.0
+margin_right = 637.0
+margin_bottom = 499.0
+color = Color( 0.741176, 0.431373, 0.752941, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+containerPath = "ScrollContainer/messContainer"
+messagePath = "res://Scenes/Message.tscn"
+choicePath = "res://Scenes/Choice.tscn"
+timerPath = "Timer"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="message_app"]
+margin_right = 286.0
+margin_bottom = 464.0
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="messContainer" type="Container" parent="message_app/ScrollContainer"]
+margin_right = 286.0
+rect_min_size = Vector2( 286, 0 )
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="message_app"]
+one_shot = true
+
+[node name="footer" type="ColorRect" parent="."]
+margin_left = 340.0
+margin_top = 513.0
+margin_right = 648.0
+margin_bottom = 558.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button" type="Button" parent="footer"]
+margin_left = 48.0
+margin_top = 10.0
+margin_right = 92.0
+margin_bottom = 41.0
+text = "<<"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button2" type="Button" parent="footer"]
+margin_left = 237.0
+margin_top = 8.0
+margin_right = 281.0
+margin_bottom = 39.0
+text = "o"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BehaviourRoot" parent="." instance=ExtResource( 3 )]
+isActive = true
